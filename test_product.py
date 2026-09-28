@@ -25,9 +25,9 @@ def test_creating_prod_invalid_details():
 def test_prod_becomes_inactive():
     product = Product("MacBook Air M2", price=1450, quantity=100)
 
-    product.set_quantity(0)
+    product.quantity = 0
 
-    assert product.get_quantity() == 0
+    assert product.quantity == 0
     assert product.is_active() is False
 
 def test_buy_modifies_quantity():
@@ -35,11 +35,11 @@ def test_buy_modifies_quantity():
 
     result = product.buy(2)
 
-    assert product.get_quantity() == 98
+    assert product.quantity == 98
     assert result == 2900
 
     product.buy(98)
-    assert product.get_quantity() == 0
+    assert product.quantity == 0
     assert product.is_active() is False
 
 def test_buy_invalid_quantity():

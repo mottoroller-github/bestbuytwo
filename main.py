@@ -13,7 +13,7 @@ def start(store):
             print("------")
 
             for product in products:
-                product.show()
+                print(product)
 
             print("------")
 
@@ -26,7 +26,7 @@ def start(store):
 
             for i, product in enumerate(all_products, start=1):
                 print(f"{i}. ", end="")
-                product.show()
+                print(product)
 
             print("------")
 
@@ -87,6 +87,18 @@ def main():
     product_list[3].set_promotion(thirty_percent)
 
     best_buy = Store(product_list)
+
+    # # setup initial stock of inventory
+    # mac = Product("MacBook Air M2", price=1450, quantity=100)
+    # bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
+    # pixel = LimitedProduct("Google Pixel 7", price=500, quantity=250, maximum=1)
+    #
+    # best_buy = Store([mac, bose])
+    # # mac.price = -100  # Should give error
+    # print(mac)  # Should print `MacBook Air M2, Price: $1450 Quantity:100`
+    # print(mac > bose)  # Should print True
+    # print(mac in best_buy)  # Should print True
+    # print(pixel in best_buy)  # Should print False
 
     start(best_buy)
 

@@ -1,5 +1,3 @@
-from products import Product
-
 class Store:
     def __init__(self, products):
         self.products = products
@@ -14,7 +12,7 @@ class Store:
         total = 0
 
         for product in self.products:
-            total += product.get_quantity()
+            total += product.quantity
 
         return total
 
@@ -42,3 +40,12 @@ class Store:
             total_price += product.buy(quantity)
 
         return total_price
+
+    def __contains__(self, product):
+        return product in self.products
+
+    def __add__(self, other):
+        if not isinstance(other, Store):
+            return NotImplemented
+
+        return Store(self.products + other.products)
