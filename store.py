@@ -12,19 +12,33 @@ class Store:
 
     def get_total_quantity(self):
         total = 0
+
         for product in self.products:
             total += product.get_quantity()
+
         return total
 
     def get_all_products(self):
         active_products = []
+
         for product in self.products:
             if product.is_active():
                 active_products.append(product)
+
         return active_products
 
     def order(self, shopping_list):
-        total_price = 0
+        quantities = {}
+
         for product, quantity in shopping_list:
+            if product in quantities:
+                quantities[product] += quantity
+            else:
+                quantities[product] = quantity
+
+        total_price = 0
+
+        for product, quantity in quantities.items():
             total_price += product.buy(quantity)
+
         return total_price
